@@ -192,4 +192,4 @@ resortHotel_table <- table(hotel_clear$arrival_date_year[hotel_clear$hotel == "R
 plot(cityHotel_table, type = "o", col = "red", xlab = "Año", ylab = "Número de reservas",
     main = "Demanda de hoteles a través de los años")
 lines(resortHotel_table, type = "o", col = "blue")
-legend("topleft", legend=c("City Hotel", "Resort Hotel"), col=c("red", "blue"), lty=1:2, cex=0.8)
+legend("topleft", legend=c("City Hotel", "Resort Hotel"), col=c("red", "blue"), lty=1, cex=1)
