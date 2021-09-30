@@ -175,3 +175,21 @@ hotel_bookings_clear$required_car_parking_spaces <- required_car_parking_spaces
 
 #Creación del archivo csv con el dataset pre-procesado y listo para su análisis
 write.csv(hotel_bookings_clear, "../data/hotel_bookings_clear.csv", na = "NA", row.names = FALSE)
+
+hotel_clear <- read.csv("../data/hotel_bookings_clear.csv", header=TRUE, stringsAsFactors=FALSE)
+
+
+
+#1
+table(hotel_clear$hotel)
+barplot(table(hotel_clear$hotel), col = c("green", "yellow"), main="Hoteles de preferencia")
+
+
+#2
+cityHotel_table <- table(hotel_clear$arrival_date_year[hotel_clear$hotel == "City Hotel"])
+resortHotel_table <- table(hotel_clear$arrival_date_year[hotel_clear$hotel == "Resort Hotel"])
+
+plot(cityHotel_table, type = "o", col = "red", xlab = "Año", ylab = "Número de reservas",
+    main = "Demanda de hoteles a través de los años")
+lines(resortHotel_table, type = "o", col = "blue")
+legend("topleft", legend=c("City Hotel", "Resort Hotel"), col=c("red", "blue"), lty=1:2, cex=0.8)
