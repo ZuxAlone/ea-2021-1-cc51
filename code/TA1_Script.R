@@ -196,7 +196,16 @@ legend("topleft", legend=c("City Hotel", "Resort Hotel"), col=c("red", "blue"), 
 
 
 #Parte c
-month_reservas <- hotel_clear[5] #Equivale a la columna "arrival_date_month"
+month_reservas <- c(hotel_clear[5]) #Equivale a la columna "arrival_date_month"
+hotel_nombre <- c(hotel_clear[1])
+
+hotel_reservas_mes = data.frame(hotel_nombre,month_reservas)
+
+grafica_hotel_reservas<-ggplot(hotel_reservas_mes, aes(x=factor(arrival_date_month)))+
+  geom_bar(aes(fill=factor(hotel)),position = "dodge")
+
+grafica_hotel_reservas
+
 vec_quarts <- c(0, 0, 0)
 vec_quarts[1] <- sum(colSums(month_reservas=="January"), colSums(month_reservas=="February"),
                      colSums(month_reservas=="March"), colSums(month_reservas=="April"))
@@ -204,6 +213,7 @@ vec_quarts[2] <- sum(colSums(month_reservas=="May"), colSums(month_reservas=="Ju
                      colSums(month_reservas=="July"), colSums(month_reservas=="August"))
 vec_quarts[3] <- sum(colSums(month_reservas=="September"), colSums(month_reservas=="October"),
                      colSums(month_reservas=="November"), colSums(month_reservas=="December"))
+
 barplot(vec_quarts, col = c("cadetblue2", "cadetblue3", "cadetblue1"), main="Temporadas de Reserva",
         names = c("Enero-Abril", "Mayo-Agosto", "Septiembre-Diciembre"))
 
@@ -224,8 +234,8 @@ barplot(vec_months, col = c("chartreuse", "chartreuse1", "chartreuse2", "chartre
 
 #Parte f
 needed_parking <- table(hotel_clear$hotel, hotel_clear$required_car_parking_spaces)
-barplot(needed_parking, col=c("darkslategray1","brown1"), legend = c("City Hotel","Resort Hotel"), 
-        main = "Número de reservas por cantidad de parking necesario por tipo de hotel", 
+barplot(needed_parking, col=c("darkslategray1","brown1"), beside= TRUE,legend = c("City Hotel","Resort Hotel"),
+        main = "Numero de reservas por cantidad de parking necesario por tipo de hotel", 
         names= c("0 parking", "1 parking", "2 parking", "3 parking"))
 
 
