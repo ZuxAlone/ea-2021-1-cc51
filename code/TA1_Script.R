@@ -180,12 +180,12 @@ hotel_clear <- read.csv("../data/hotel_bookings_clear.csv", header=TRUE, strings
 
 
 
-#1
+#Parte a
 table(hotel_clear$hotel)
 barplot(table(hotel_clear$hotel), col = c("green", "yellow"), main="Hoteles de preferencia")
 
 
-#2
+#Parte b
 cityHotel_table <- table(hotel_clear$arrival_date_year[hotel_clear$hotel == "City Hotel"])
 resortHotel_table <- table(hotel_clear$arrival_date_year[hotel_clear$hotel == "Resort Hotel"])
 
@@ -193,3 +193,49 @@ plot(cityHotel_table, type = "o", col = "red", xlab = "Año", ylab = "Número de
     main = "Demanda de hoteles a través de los años")
 lines(resortHotel_table, type = "o", col = "blue")
 legend("topleft", legend=c("City Hotel", "Resort Hotel"), col=c("red", "blue"), lty=1, cex=1)
+
+
+#Parte c
+month_reservas <- hotel_clear[5] #Equivale a la columna "arrival_date_month"
+vec_quarts <- c(0, 0, 0)
+vec_quarts[1] <- sum(colSums(month_reservas=="January"), colSums(month_reservas=="February"),
+                     colSums(month_reservas=="March"), colSums(month_reservas=="April"))
+vec_quarts[2] <- sum(colSums(month_reservas=="May"), colSums(month_reservas=="June"),
+                     colSums(month_reservas=="July"), colSums(month_reservas=="August"))
+vec_quarts[3] <- sum(colSums(month_reservas=="September"), colSums(month_reservas=="October"),
+                     colSums(month_reservas=="November"), colSums(month_reservas=="December"))
+barplot(vec_quarts, col = c("cadetblue2", "cadetblue3", "cadetblue1"), main="Temporadas de Reserva",
+        names = c("Enero-Abril", "Mayo-Agosto", "Septiembre-Diciembre"))
+
+
+#Parte d
+vec_months <- c(colSums(month_reservas=="January"), colSums(month_reservas=="February"),
+                colSums(month_reservas=="March"), colSums(month_reservas=="April"),
+                colSums(month_reservas=="May"), colSums(month_reservas=="June"),
+                colSums(month_reservas=="July"), colSums(month_reservas=="August"),
+                colSums(month_reservas=="September"), colSums(month_reservas=="October"),
+                colSums(month_reservas=="November"), colSums(month_reservas=="December"))
+barplot(vec_months, col = c("chartreuse", "chartreuse1", "chartreuse2", "chartreuse3"),
+        main="Cantidad de reservas por mes", names=c("En", "Fe", "Ma", "Ab", "May", "Ju", "Jul", "Ag", "Se", "Oc", "No", "Di"))
+
+
+#Parte e
+
+
+#Parte f
+needed_parking <- table(hotel_clear$hotel, hotel_clear$required_car_parking_spaces)
+barplot(needed_parking, col=c("darkslategray1","brown1"), legend = c("City Hotel","Resort Hotel"), 
+        main = "Número de reservas por cantidad de parking necesario por tipo de hotel", 
+        names= c("0 parking", "1 parking", "2 parking", "3 parking"))
+
+
+#Parte g
+status_reservas <- hotel_clear[31]
+status_month <- table(hotel_clear$reservation_status, hotel_clear$arrival_date_month)
+vec_cancelled <- c(status_month[1, "January"], status_month[1, "February"], status_month[1, "March"],
+                status_month[1, "April"], status_month[1, "May"], status_month[1, "June"],
+                status_month[1, "July"], status_month[1, "August"], status_month[1, "September"],
+                status_month[1, "October"], status_month[1, "November"], status_month[1, "December"])
+barplot(vec_cancelled, col = c("gold", "gold1", "gold2", "gold3"),
+        main="Cantidad de reservas canceladas por mes",
+        names=c("En", "Fe", "Ma", "Ab", "May", "Ju", "Jul", "Ag", "Se", "Oc", "No", "Di"))
