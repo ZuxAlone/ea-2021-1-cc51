@@ -183,6 +183,7 @@ hotel_clear <- read.csv("../data/hotel_bookings_clear.csv", header=TRUE, strings
 
 #Parte a
 tablaA <- table(hotel_clear$hotel)
+tablaA
 barplot(tablaA, col = c("green", "yellow"), ylim = c(0, 60000),
         xlab = "Tipo de Hotel", ylab = "Numero de reservas", main="Hoteles de preferencia")
 
@@ -242,7 +243,7 @@ barplot(matrix(c(vec_peque_city, vec_peque_reso), nrow=2, byrow=T), col=c("mediu
 needed_parking <- table(hotel_clear$hotel, hotel_clear$required_car_parking_spaces)
 needed_parking
 barplot(needed_parking, col=c("darkslategray1","brown1"), beside= TRUE,legend = c("City Hotel","Resort Hotel"), ylim=c(0,55000),
-        main = "Numero de reservas por cantidad de parking necesario por tipo de hotel", 
+        ylab = "Número de reservas", main = "Numero de reservas por cantidad de parking necesario por tipo de hotel", 
         names= c("0 parking", "1 parking", "2 parking", "3 parking"))
 
 
@@ -258,5 +259,5 @@ vec_can_reso <- c(status_mes[2, 1, "January"], status_mes[2, 1, "February"], sta
                   status_mes[2, 1, "July"], status_mes[2, 1, "August"], status_mes[2, 1, "September"],
                   status_mes[2, 1, "October"], status_mes[2, 1, "November"], status_mes[2, 1, "December"])
 barplot(matrix(c(vec_can_city, vec_can_reso), nrow=2, byrow=T), col = c("gold", "gold3"), legend = c("City Hotel", "Resort Hotel"),
-        beside = TRUE, main="Cantidad de reservas canceladas por mes",
+        xlab = "Meses", ylab = "Número de reservas", beside = TRUE, main="Cantidad de reservas canceladas por mes",
         names=c("En", "Fe", "Ma", "Ab", "May", "Ju", "Jul", "Ag", "Se", "Oc", "No", "Di"))
