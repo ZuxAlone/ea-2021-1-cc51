@@ -28,7 +28,7 @@
 El Objetivo del trabajo consta en realizar un análisis exploratorio de un conjunto de datos dados mediante visualizaciones como gráficos, preparación de los datos
 y obteniendo inferencias básicas con el lenguaje R y el uso de RStudio como herramienta de software.
     
-De igual forma, el público objetivo para este análisis de trabajo es dedicado a las empresas de hotelería las cuales desean saber sobre el estado de su propio servicio y a la vez conocer qué elementos puede mejorar o considerar brindar para la mejora de su giro de negocio.
+De igual forma, el público objetivo para este caso de análisis de trabajo es dedicado a las empresas de hotelería las cuales desean saber sobre el estado de su propio servicio y a la vez conocer qué elementos puede mejorar o considerar brindar para la mejora de su giro de negocio.
 
 ## 2. Alumnos <a name="data2"></a>
     
@@ -55,6 +55,8 @@ Si deseas tener un mayor detalle de nuestro trabajo, adjuntamos un Archivo PDF e
     
 
 ## 4. Conclusiones <a name="data4"></a>
+    
+Como conclusión, podemos destacar que el uso y aprendizaje del Lenguaje R y la herramienta "RStudio" ha sido muy escencial para la labor de nuestro proyecto y es muy recomendable para el uso estadístico de datos a gran escala. Del mismo modo, gracias al análisis, gestión de datos y la implementación de gráficas hemos podido responder a las preguntas formuladas las cuales pueden interesarles a nuestro público objetivo y sobretodo dan validéz a nuestro trabajo.
   
 © 2021 The Author(s). by UPC
 
